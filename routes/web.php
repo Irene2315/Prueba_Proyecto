@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return view('paginaInicio');
 });
 
 Route::get('/paginaUsuario', function () {
@@ -31,6 +32,4 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
-Route::get('/paginaInicio', function () {
-    return view('paginaInicio');
-});
+
