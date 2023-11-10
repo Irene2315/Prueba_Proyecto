@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\coches;
+use App\Models\Coche;
 use Illuminate\Http\Request;
 
-class CochesController extends Controller
+class CocheController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class CochesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(coches $coches)
+    public function show(Coche $coche)
     {
         //
     }
@@ -42,7 +42,7 @@ class CochesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(coches $coches)
+    public function edit(Coche $coche)
     {
         //
     }
@@ -50,7 +50,7 @@ class CochesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, coches $coches)
+    public function update(Request $request, Coche $coche)
     {
         //
     }
@@ -58,7 +58,7 @@ class CochesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(coches $coches)
+    public function destroy(Coche $coche)
     {
         //
     }
