@@ -20,7 +20,7 @@ class CocheController extends Controller
      */
     public function create()
     {
-        //
+        return view('auth.register');
     }
 
     /**
@@ -28,6 +28,7 @@ class CocheController extends Controller
      */
     public function store(Request $request)
     {
+    
         //
     }
 
@@ -36,7 +37,7 @@ class CocheController extends Controller
      */
     public function show(Coche $coche)
     {
-        //
+        return view('paginaCocheUsuario', compact('coche'));
     }
 
     /**

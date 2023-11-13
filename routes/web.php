@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CocheController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,7 @@ Route::get('/paginaUsuario', function () {
     return view('paginaUsuario');
 })->middleware(['auth', 'verified'])->name('paginaUsuario');
 
-Route::get('/paginaCocheUsuario', function () {
-    return view('paginaCocheUsuario');
-})->middleware(['auth', 'verified'])->name('paginaCocheUsuario');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,5 +34,10 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+/*Route::get('/paginaCocheUsuario', function () {
+    return view('paginaCocheUsuario');
+})->middleware(['auth', 'verified'])->name('paginaCocheUsuario');*/
+
+Route::get('/paginaCocheUsuario', [CocheController::class,'show']);
 
 
