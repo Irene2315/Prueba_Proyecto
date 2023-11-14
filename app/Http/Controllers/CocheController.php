@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Coche;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CocheController extends Controller
 {
@@ -28,16 +30,16 @@ class CocheController extends Controller
      */
     public function store(Request $request)
     {
-    
+
         //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Coche $coche)
+    public static function show()
     {
-        return view('paginaCocheUsuario', compact('coche'));
+        return DB::select('select * from coches where idEmpleado = ?', [Auth::user()->id]);
     }
 
     /**
