@@ -75,23 +75,33 @@ class CocheController extends Controller
      */
     public static function show()
     {
-        return view('paginaCocheUsuario')->with('coches', DB::select('select * from coches where idEmpleado = ?', [Auth::user()->id]));
+
+        $coche= DB::select('SELECT * FROM coches WHERE idEmpleado = ?', [Auth::user()->id]);
+
+        return view('paginaCocheUsuario')->with('coches', $coche);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Coche $coche)
+    public function edit($matricula)
     {
-        //
+        $cocheModificar = DB::select('SELECT * FROM coches WHERE matricula = ?', [$matricula]);
+
+        return view('modificarCocheFormulario')->with('cocheModificar', $cocheModificar[0]);
+
+        
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Coche $coche)
+    public function update($cocheModificar)
     {
-        //
+        DB::update('UPDATE FROM coches WHERE matricula = ?', [$cocheModificar->matricula]);
+
+        return  redirect()->route('paginaCocheUsuario');
+
     }
 
     /**

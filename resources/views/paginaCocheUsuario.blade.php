@@ -18,6 +18,13 @@
             <td>{{ $c->marca }}</td>
             <td>{{ $c->modelo }}</td>
             <td>
+                  <form action="{{ route('modificarCocheFormulario', $c->matricula) }}" method="GET">
+                    @csrf
+                            <button type="submit">Modificar</button>
+                   </form>
+            </td>
+            
+            <td>
                   <form action="{{ route('eliminarCoche', $c->matricula) }}" method="POST">
                     @csrf
                     @method('DELETE')

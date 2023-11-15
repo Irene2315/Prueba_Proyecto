@@ -21,6 +21,7 @@
                     <x-nav-link :href="route('crearCocheFormulario')" :active="request()->routeIs('crearCocheFormulario')">
                         {{ __('Crear Coche') }}
                     </x-nav-link>
+                    
                 </div>
             </div>
 

@@ -39,6 +39,11 @@ Route::get('/crearCocheFormulario', [CocheController::class,'formularioCrear'])-
 
 Route::post('/anadirCoche', [CocheController::class,'store'])->name('anadirCoche');
 
+Route::get('/modificarCocheFormulario/{matricula}',[CocheController::class,'edit'])->name('modificarCocheFormulario');
+
+Route::post('/actualizarCoche/$cocheModificar->matricula',[CocheController::class,'update'])->name('actualizarCoche');
 
 Route::delete('/eliminarCoche/{matricula}', [CocheController::class, 'destroy'])->name('eliminarCoche');
+
+
 
