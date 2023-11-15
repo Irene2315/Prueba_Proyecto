@@ -1,6 +1,7 @@
 
 
-
+<x-app-layout>
+    
     <h1>Nuevo Coche</h1>
 
     <form method="post" action="{{ route('anadirCoche') }}">
@@ -20,4 +21,4 @@
 
         <button type="submit">Guardar</button>
     </form>
-
+</x-app-layout>
