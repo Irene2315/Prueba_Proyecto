@@ -38,3 +38,7 @@ Route::get('/crearCocheFormulario', [CocheController::class,'formularioCrear'])-
 
 
 Route::post('/anadirCoche', [CocheController::class,'store'])->name('anadirCoche');
+
+
+Route::delete('/eliminarCoche/{matricula}', [CocheController::class, 'destroy'])->name('eliminarCoche');
+

@@ -97,8 +97,11 @@ class CocheController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Coche $coche)
+    public function destroy($matricula)
     {
-        //
+
+        DB::delete('DELETE FROM coches WHERE matricula = ?', [$matricula]);
+
+        return  redirect()->route('paginaCocheUsuario');
     }
 }

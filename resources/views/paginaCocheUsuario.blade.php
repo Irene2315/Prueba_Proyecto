@@ -17,8 +17,14 @@
             <td>{{ $c->matricula }}</td>
             <td>{{ $c->marca }}</td>
             <td>{{ $c->modelo }}</td>
-
-            </tr>
+            <td>
+                  <form action="{{ route('eliminarCoche', $c->matricula) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                            <button type="submit">Eliminar</button>
+                   </form>
+            </td>
+        </tr>
             @endforeach
 
             </table>
