@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('paginaCocheUsuario')" :active="request()->routeIs('paginaCocheUsuario')">
                         {{ __('Coche') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('crearCocheFormulario')" :active="request()->routeIs('crearCocheFormulario')">
+                        {{ __('Crear Coche') }}
+                    </x-nav-link>
                 </div>
             </div>
 

@@ -20,9 +20,19 @@ class CocheController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+    public function formularioCrear(Request $request){
+        $idEmpleado = Auth::user()->id;
+
+        return view('crearCocheFormulario', ['idEmpleado' => $idEmpleado]);
+    }
     public function create()
     {
-        return view('auth.register');
+        
+
+       
+
+        //return view('auth.register');
     }
 
     /**
@@ -31,7 +41,33 @@ class CocheController extends Controller
     public function store(Request $request)
     {
 
-        //
+        $matricula = $request->input('matricula');
+        $marca=$request->input('marca');
+        $modelo=$request->input('modelo');
+        $idEmpleado = Auth::user()->id;
+
+        $coche = new Coche();
+        $coche->matricula = $matricula;
+        $coche->marca = $marca;
+        $coche->modelo = $modelo;
+        $coche->idEmpleado = $idEmpleado;
+        
+        $coche->save();
+
+        /*$coche = Coche::create([
+            'matricula' => $request->matricula,
+            '' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return DB::table('coches')->insert([
+            'matricula' => '',
+            'campo2' => 'valor2',
+            'idEmpleado' => Auth::user()->id,
+            
+        ]);*/
+
+        return redirect('/paginaCocheUsuario');
     }
 
     /**
@@ -39,6 +75,7 @@ class CocheController extends Controller
      */
     public static function show()
     {
+        // return view('paginaCocheUsuario')->with('coche', DB::select('select * from coches where idEmpleado = ?', [Auth::user()->id]));
         return DB::select('select * from coches where idEmpleado = ?', [Auth::user()->id]);
     }
 

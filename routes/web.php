@@ -42,4 +42,7 @@ Route::get('/paginaCocheUsuario', function () {
 })->middleware(['auth', 'verified'])->name('paginaCocheUsuario');
 
 
+Route::get('/crearCocheFormulario', [CocheController::class,'formularioCrear'])->name('crearCocheFormulario');
 
+
+Route::post('/anadirCoche', [CocheController::class,'store'])->name('anadirCoche');
