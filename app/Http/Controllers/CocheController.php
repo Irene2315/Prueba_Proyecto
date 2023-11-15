@@ -75,8 +75,7 @@ class CocheController extends Controller
      */
     public static function show()
     {
-        // return view('paginaCocheUsuario')->with('coche', DB::select('select * from coches where idEmpleado = ?', [Auth::user()->id]));
-        return DB::select('select * from coches where idEmpleado = ?', [Auth::user()->id]);
+        return view('paginaCocheUsuario')->with('coches', DB::select('select * from coches where idEmpleado = ?', [Auth::user()->id]));
     }
 
     /**

@@ -24,7 +24,7 @@ Route::get('/paginaUsuario', function () {
     return view('paginaUsuario');
 })->middleware(['auth', 'verified'])->name('paginaUsuario');
 
-/*Route::get('/paginaCocheUsuario', [CocheController::class,'show']);*/
+Route::get('/paginaCocheUsuario', [CocheController::class,'show'])->name('paginaCocheUsuario');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -32,15 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-
 require __DIR__ . '/auth.php';
-
-Route::get('/paginaCocheUsuario', function () {
-    $coche = CocheController::show();
-    return view('paginaCocheUsuario')->with('coche', $coche);
-})->middleware(['auth', 'verified'])->name('paginaCocheUsuario');
-
 
 Route::get('/crearCocheFormulario', [CocheController::class,'formularioCrear'])->name('crearCocheFormulario');
 

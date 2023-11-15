@@ -12,7 +12,7 @@
             <td>{{ ('Marca') }}</td>
             <td>{{ ('Modelo') }}</td>
 
-            @foreach($coche as $c)
+            @foreach($coches as $c)
         <tr>
             <td>{{ $c->matricula }}</td>
             <td>{{ $c->marca }}</td>
