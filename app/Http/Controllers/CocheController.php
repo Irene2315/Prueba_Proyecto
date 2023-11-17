@@ -21,16 +21,17 @@ class CocheController extends Controller
      * Show the form for creating a new resource.
      */
 
-    public function formularioCrear(Request $request){
+    public function formularioCrear(Request $request)
+    {
         $idEmpleado = Auth::user()->id;
 
         return view('crearCocheFormulario', ['idEmpleado' => $idEmpleado]);
     }
     public function create()
     {
-        
 
-       
+
+
 
         //return view('auth.register');
     }
@@ -41,6 +42,7 @@ class CocheController extends Controller
     public function store(Request $request)
     {
 
+        /*
         $matricula = $request->input('matricula');
         $marca=$request->input('marca');
         $modelo=$request->input('modelo');
@@ -52,20 +54,29 @@ class CocheController extends Controller
         $coche->modelo = $modelo;
         $coche->idEmpleado = $idEmpleado;
         
-        $coche->save();
+        $coche->save();*/ 
 
-        /*$coche = Coche::create([
+        //$article = Article::create(['title' => 'Traveling to Asia']);
+        
+
+       
+        /*
+        DB::table('coches')->insert([
+
             'matricula' => $request->matricula,
-            '' => $request->email,
-            'password' => Hash::make($request->password),
+            'marca' => $request->marca,
+            'modelo' => $request->modelo,
+            'idEmpleado' => $request->idEmpleado,
+
+        ]);*/
+
+        Coche::create([
+            'matricula' => $request->matricula,
+            'marca' => $request->marca,
+            'modelo' => $request->modelo,
+            'idEmpleado' => $request->idEmpleado,
         ]);
 
-        return DB::table('coches')->insert([
-            'matricula' => '',
-            'campo2' => 'valor2',
-            'idEmpleado' => Auth::user()->id,
-            
-        ]);*/
 
         return redirect('/paginaCocheUsuario');
     }
@@ -76,7 +87,11 @@ class CocheController extends Controller
     public static function show()
     {
 
-        $coche= DB::select('SELECT * FROM coches WHERE idEmpleado = ?', [Auth::user()->id]);
+        // $coche= DB::select('SELECT * FROM coches WHERE idEmpleado = ?', [Auth::user()->id]);
+
+        $coche = Coche::where('idEmpleado', Auth::user()->id)->get();
+
+
 
         return view('paginaCocheUsuario')->with('coches', $coche);
     }
@@ -86,11 +101,14 @@ class CocheController extends Controller
      */
     public function edit($matricula)
     {
-        $cocheModificar = DB::select('SELECT * FROM coches WHERE matricula = ?', [$matricula]);
+
+        /*$cocheModificar = DB::select('SELECT * FROM coches WHERE matricula = ?', [$matricula]);*/
+
+        $cocheModificar = Coche::where('matricula', $matricula)->get();
 
         return view('modificarCocheFormulario')->with('cocheModificar', $cocheModificar[0]);
 
-        
+
     }
 
     /**
@@ -98,7 +116,8 @@ class CocheController extends Controller
      */
     public function update(Request $request)
     {
-        
+
+        /* 
         $matricula = $request->input('matricula');
         $marca=$request->input('marca');
         $modelo=$request->input('modelo');
@@ -110,9 +129,29 @@ class CocheController extends Controller
         $coche->modelo = $modelo;
         $coche->idEmpleado = $idEmpleado;
         
-        $coche->save();
+        $coche->save();*/
+
+        /*
+        DB::table('coches')
+            ->where('matricula',$request->matricula)
+            ->update([
+                'marca' => $request->marca,
+                'modelo' => $request->modelo,
+                'idEmpleado' => $request->idEmpleado,
+
+            ]);
+            */
+
         
-        return  redirect()->route('paginaCocheUsuario');
+            Coche::update([
+                'matricula' => $request->matricula,
+                'marca' => $request->marca,
+                'modelo' => $request->modelo,
+                'idEmpleado' => $request->idEmpleado,
+            ]);
+        
+
+        return redirect()->route('paginaCocheUsuario');
 
     }
 
@@ -122,8 +161,10 @@ class CocheController extends Controller
     public function destroy($matricula)
     {
 
-        DB::delete('DELETE FROM coches WHERE matricula = ?', [$matricula]);
+        //DB::delete('DELETE FROM coches WHERE matricula = ?', [$matricula]);
 
-        return  redirect()->route('paginaCocheUsuario');
+
+
+        return redirect()->route('paginaCocheUsuario');
     }
 }
