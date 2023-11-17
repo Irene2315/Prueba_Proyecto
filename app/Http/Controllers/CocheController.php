@@ -96,10 +96,22 @@ class CocheController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update($cocheModificar)
+    public function update(Request $request)
     {
-        DB::update('UPDATE FROM coches WHERE matricula = ?', [$cocheModificar->matricula]);
+        
+        $matricula = $request->input('matricula');
+        $marca=$request->input('marca');
+        $modelo=$request->input('modelo');
+        $idEmpleado = Auth::user()->id;
 
+        $coche = new Coche();
+        $coche->matricula = $matricula;
+        $coche->marca = $marca;
+        $coche->modelo = $modelo;
+        $coche->idEmpleado = $idEmpleado;
+        
+        $coche->save();
+        
         return  redirect()->route('paginaCocheUsuario');
 
     }
