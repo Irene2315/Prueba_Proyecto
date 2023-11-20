@@ -12,7 +12,8 @@ class Coche extends Model
     protected $fillable = [
         'matricula',
         'marca',
-        'modelo'
+        'modelo',
+        'idEmpleado'
     ];
 
     public function user(){

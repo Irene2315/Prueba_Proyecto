@@ -54,12 +54,12 @@ class CocheController extends Controller
         $coche->modelo = $modelo;
         $coche->idEmpleado = $idEmpleado;
         
-        $coche->save();*/ 
+        $coche->save();*/
 
         //$article = Article::create(['title' => 'Traveling to Asia']);
-        
 
-       
+
+
         /*
         DB::table('coches')->insert([
 
@@ -69,7 +69,6 @@ class CocheController extends Controller
             'idEmpleado' => $request->idEmpleado,
 
         ]);*/
-
         Coche::create([
             'matricula' => $request->matricula,
             'marca' => $request->marca,
@@ -142,14 +141,17 @@ class CocheController extends Controller
             ]);
             */
 
-        
-            Coche::update([
+
+        Coche::where('matricula', $request->matricula)
+            ->update([
                 'matricula' => $request->matricula,
                 'marca' => $request->marca,
                 'modelo' => $request->modelo,
                 'idEmpleado' => $request->idEmpleado,
             ]);
-        
+
+
+
 
         return redirect()->route('paginaCocheUsuario');
 
