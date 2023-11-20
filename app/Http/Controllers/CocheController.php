@@ -163,7 +163,7 @@ class CocheController extends Controller
 
         //DB::delete('DELETE FROM coches WHERE matricula = ?', [$matricula]);
 
-
+        Coche::where('matricula', $matricula)->delete();
 
         return redirect()->route('paginaCocheUsuario');
     }
