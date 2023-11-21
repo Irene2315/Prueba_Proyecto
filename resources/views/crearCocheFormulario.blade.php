@@ -1,11 +1,9 @@
-
-
 <x-app-layout>
-    
+
     <h1>Nuevo Coche</h1>
 
     <form method="post" action="{{ route('anadirCoche') }}">
-        @csrf 
+        @csrf
         <label for="matricula">Matricula:</label>
         <input type="text" name="matricula" id="matricula" required>
 
@@ -16,8 +14,6 @@
         <input type="text" name="modelo" id="modelo" required>
 
         <input type="hidden" name="idEmpleado" value="{{ $idEmpleado }}" required>
-
-    
 
         <button type="submit">Guardar</button>
     </form>
