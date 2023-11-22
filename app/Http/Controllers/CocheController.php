@@ -34,12 +34,25 @@ class CocheController extends Controller
     //Recogerá dicho formulario creará un nuevo objeto coche en la base de datos
     public function store(Request $request)
     {
+        /*
         Coche::create([
             'matricula' => $request->matricula,
             'marca' => $request->marca,
             'modelo' => $request->modelo,
             'idEmpleado' => $request->idEmpleado,
-        ]);
+        ]);*/
+
+        
+        $coches = [
+            [
+                'matricula' => '1111D',
+                'marca' => 'Opel',
+                'modelo' => 'astra',
+                'idEmpleado' => $request->idEmpleado
+            ]
+            ];
+
+        Coche::create($coches[0]); 
 
         return redirect('/paginaCocheUsuario');
     }
@@ -57,12 +70,22 @@ class CocheController extends Controller
     public function update(Request $request)
     {
 
+        /*
         Coche::where('matricula', $request->matricula)
             ->update([
                 'matricula' => $request->matricula,
                 'marca' => $request->marca,
                 'modelo' => $request->modelo,
                 'idEmpleado' => $request->idEmpleado,
+            ]);*/
+        
+        
+        Coche::where('matricula', '1111D')
+            ->update([
+                'matricula' => '1111D',
+                'marca' => 'Zanusi',
+                'modelo' => 'astra',
+                'idEmpleado' => $request->idEmpleado
             ]);
 
         return redirect()->route('paginaCocheUsuario');
@@ -71,7 +94,10 @@ class CocheController extends Controller
     //Eliminará un objeto en la base de datos
     public function destroy($matricula)
     {
-        Coche::where('matricula', $matricula)->delete();
+        //Coche::where('matricula', $matricula)->delete();
+
+        Coche::where('matricula', '1111D')->delete();
+
 
         return redirect()->route('paginaCocheUsuario');
     }
