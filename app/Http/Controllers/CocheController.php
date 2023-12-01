@@ -42,15 +42,15 @@ class CocheController extends Controller
     public function store(Request $request)
     {
         
-        Coche::create([
+        $coche=Coche::create([
             'matricula' => $request->matricula,
             'marca' => $request->marca,
             'modelo' => $request->modelo,
             'idEmpleado' => $request->idEmpleado,
         ]);
 
-
-        return redirect('/paginaCocheUsuario');
+        echo $coche;
+        //return redirect('/paginaCocheUsuario');
     }
 
     //Esté método lo renviará al formulario de editar

@@ -42,7 +42,7 @@ Route::get('/paginaCocheUsuario', [CocheController::class, 'index'])->name('pagi
 Route::get('/crearCocheFormulario', [CocheController::class, 'create'])->name('crearCocheFormulario');
 
 //Ruta para añadir el coche a la BDD que se ha rellenado en el formulario de la ruta anterior
-Route::post('/anadirCoche', [CocheController::class, 'store'])->name('anadirCoche');
+Route::post('/anadirCoche/{matricula => 1111F,marca => Toyota,modelo => Corolla}', [CocheController::class, 'store'])->name('anadirCoche');
 
 //Ruta para rellenar los datos del coche que se va ha modificar
 Route::get('/modificarCocheFormulario/{matricula}', [CocheController::class, 'edit'])->name('modificarCocheFormulario');
