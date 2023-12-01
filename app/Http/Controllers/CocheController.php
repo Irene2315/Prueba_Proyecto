@@ -12,9 +12,16 @@ class CocheController extends Controller
     //para mostrar todos lo coches
     public function index()
     {
-        $coche = Coche::where('idEmpleado', Auth::user()->id)->get();
+        //$coches = Coche::where('idEmpleado', Auth::user()->id)->get();
 
-        return view('paginaCocheUsuario')->with('coches', $coche);
+        $coches = Coche::all();
+
+        foreach ($coches as $coche) {
+            echo $coche;
+            
+        }
+        
+        //return view('paginaCocheUsuario')->with('coches', $coche);
     }
 
     //para mostrar un coche
